@@ -206,14 +206,15 @@ data = """1711
 1806
 1851"""
 vals = data.split("\n")
+
 for i in range(len(vals)):
     vals[i] = int(vals[i])
 '''
-for i in range(len(vals)):
-#    print(vals[i])
-    for j in range(i+1,len(vals)-i,1):
-        if((vals[i] + vals[j]) == 2020):
-            print(vals[i]*vals[j])
+for part 1
+
+for i in vals:
+    if(2020-i) in vals:
+        print(i*(2020-i))
 '''
 for j in vals:
     for i in vals:

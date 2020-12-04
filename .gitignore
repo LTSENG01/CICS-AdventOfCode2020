@@ -1,0 +1,6 @@
+#cargo (Rust) compiles to a dir called target.
+#Build artifacts shouldn't be checked in.
+**/target/
+#Editor intermediary files end like this. 
+#Don't check them in either
+*~

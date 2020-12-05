@@ -14,26 +14,7 @@ public class zzuo {
     public static void part1(Scanner scn) {
         int highestID = 0;
         while(scn.hasNextLine()) {
-            int currID = 0, low = 0, high = 127;
-            String binary = scn.nextLine();
-            for(int i=0; i<7; i++) {
-                if(binary.charAt(i) == 'F') { // front
-                    high = (low+high)/2;
-                } else { // back
-                    low = (int) Math.ceil((low+high)/2.0);
-                }
-            }
-            currID += 8 * low;
-            low = 0;
-            high = 7;
-            for(int i=7; i<10; i++) {
-                if(binary.charAt(i) == 'L') { // left
-                    high = (low+high)/2;
-                } else { // right
-                    low = (int) Math.ceil((low+high)/2.0);
-                }
-            }
-            currID += low;
+            int currID = getSeat(scn.nextLine());
             if(currID > highestID) {
                 highestID = currID;
             }
@@ -44,27 +25,7 @@ public class zzuo {
     public static void part2(Scanner scn) {
         ArrayList<Integer> seats = new ArrayList<>();
         while(scn.hasNextLine()) {
-            int currID = 0, low = 0, high = 127;
-            String binary = scn.nextLine();
-            for(int i=0; i<7; i++) {
-                if(binary.charAt(i) == 'F') { // front
-                    high = (low+high)/2;
-                } else { // back
-                    low = (int) Math.ceil((low+high)/2.0);
-                }
-            }
-            currID += 8 * low;
-            low = 0;
-            high = 7;
-            for(int i=7; i<10; i++) {
-                if(binary.charAt(i) == 'L') { // left
-                    high = (low+high)/2;
-                } else { // right
-                    low = (int) Math.ceil((low+high)/2.0);
-                }
-            }
-            currID += low;
-            seats.add(currID);
+            seats.add(getSeat(scn.nextLine()));
         }
         Collections.sort(seats);
         int prev = 0;
@@ -74,5 +35,28 @@ public class zzuo {
             }
             prev = i;
         }
+    }
+
+    public static int getSeat(String binary) {
+        int currID = 0, low = 0, high = 127;
+        for(int i=0; i<7; i++) {
+            if(binary.charAt(i) == 'F') { // front
+                high = (low+high)/2;
+            } else { // back
+                low = (int) Math.ceil((low+high)/2.0);
+            }
+        }
+        currID += 8 * low;
+        low = 0;
+        high = 7;
+        for(int i=7; i<10; i++) {
+            if(binary.charAt(i) == 'L') { // left
+                high = (low+high)/2;
+            } else { // right
+                low = (int) Math.ceil((low+high)/2.0);
+            }
+        }
+        currID += low;
+        return currID;
     }
 }

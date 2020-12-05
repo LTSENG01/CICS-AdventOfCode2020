@@ -1,6 +1,6 @@
 # Contributing to CICS-AdventOfCode2020
 
-Only share solutions after 24 hours of puzzle release!
+Only share solutions after the global leaderboards have been filled for that day!
 
 To share your solution(s):
 * Fork this repository
